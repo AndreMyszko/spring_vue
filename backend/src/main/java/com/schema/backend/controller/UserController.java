@@ -41,7 +41,7 @@ public class UserController {
     }
 
     // find user by email ("email" deve ser uma "unique key")
-    @GetMapping("/user-name={email}")
+    @GetMapping("/user-email={email}")
     public Optional<User> selectByEmail(@PathVariable(value = "email") String email) {
         return userRepository.findByEmail(email);
     }
