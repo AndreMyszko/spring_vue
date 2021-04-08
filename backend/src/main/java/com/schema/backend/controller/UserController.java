@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.schema.backend.entity.User;
 import com.schema.backend.repository.UserRepository;
 
+import org.apache.tomcat.util.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    
+
 
     //Controlando o CRUD do User:
     //Perceba que extender a classe USER com JPA Repository possibilita um CRUD muito simples(veja a class: UserRepository)!
@@ -45,11 +46,17 @@ public class UserController {
     public Optional<User> selectByEmail(@PathVariable(value = "email") String email) {
         return userRepository.findByEmail(email);
     }
-    
+
     // insert new user
     @PostMapping("/insert-user")
-    public User savetUser(@RequestBody User user) {
-        return userRepository.save(user);
+    public User savetUser(@RequestBody User user){
+				Optional<User> findbyEmail = userRepository.findByEmail(user.getEmail());
+				if(findbyEmail.isEmpty() == true){
+					return userRepository.save(user);
+				}else{
+					User userNull = new User();
+					return userNull;
+				}
     }
 
     // delete user (VOID)
@@ -58,10 +65,10 @@ public class UserController {
         userRepository.deleteById(id);
     }
 
-    // update user 
+    // update user
     @PutMapping("/update-user={id}")
     public User updateUser(@RequestBody User user){
         return userRepository.save(user);
     }
-    
+
 }
