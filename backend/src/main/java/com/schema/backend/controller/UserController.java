@@ -47,7 +47,7 @@ public class UserController {
     }
     
     // insert new user
-    @PostMapping("/insert-user={id}")
+    @PostMapping("/insert-user")
     public User savetUser(@RequestBody User user) {
         return userRepository.save(user);
     }
@@ -55,12 +55,11 @@ public class UserController {
     // delete user (VOID)
     @DeleteMapping("/delete-user={id}")
     public void deleteUser(@PathVariable Integer id){
-        //utilizar metodo de deleteById....
         userRepository.deleteById(id);
     }
 
     // update user 
-    @PutMapping("/update-user={$id}")
+    @PutMapping("/update-user={id}")
     public User updateUser(@RequestBody User user){
         return userRepository.save(user);
     }
