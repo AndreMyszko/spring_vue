@@ -48,8 +48,9 @@ public class UserController {
 
     // insert new user
     @PostMapping("/insert-user")
-    public User savetUser(@RequestBody User user){
+    public User saveUser(@RequestBody User user){
 				Optional<User> findbyEmail = userRepository.findByEmail(user.getEmail());
+
 				if(findbyEmail.isEmpty() == true){
 					return userRepository.save(user);
 				}else{
