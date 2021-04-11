@@ -57,6 +57,14 @@
 			<version>1.0.0.Final</version>
 		</dependency>
 
+		<!-- UNIREST - for TRELLO API consume -->
+		<!-- Pull in as a traditional dependency -->
+		<dependency>
+			<groupId>com.konghq</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>3.11.09</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -10,7 +10,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(){
-        return ("Hello to vue(frontent) from spring(backend)");
+        return ("Bem vindo ao nosso aplicativo, sinta-se livre para explorar as novidades, caso seja de seu interesse, considere se cadastrar para ter mais acesso!");
     }
     
 }

@@ -6,7 +6,6 @@ import java.util.Optional;
 import com.schema.backend.entity.User;
 import com.schema.backend.repository.UserRepository;
 
-import org.apache.tomcat.util.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
