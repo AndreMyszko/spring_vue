@@ -69,15 +69,16 @@ public class UserController {
     // update user
 		// conversar com o professor sobre os retornos
     @PutMapping("/update-user={id}")
-    public String updateUser(@RequestBody User user){
-			String t = userRepository.findById(user.getId()).get().getEmail().toLowerCase().toString();
-			String p =  user.getEmail().toLowerCase().toString();
-			if(!t.equals(p)){
-				return "Email não pode ser alterado!";
-			}else{
-				userRepository.save(user);
-				return "Sucesso!";
-			}
+    public User updateUser(@RequestBody User user){
+        //Não deu muito certo, deixar comentado por enquanto... tem que verificar o que q ta acontecendo depois, essa regra ta afetando o insert e não o update, deve ter feito alguma chamada atravessada no front..
+			// String t = userRepository.findById(user.getId()).get().getEmail().toLowerCase().toString();
+			// String p =  user.getEmail().toLowerCase().toString();
+			// if(!t.equals(p)){
+			// 	return "Email não pode ser alterado!";
+			// }else{
+				return userRepository.save(user);
+			// 	return "Sucesso!";
+			// }
 		}
 
 }
