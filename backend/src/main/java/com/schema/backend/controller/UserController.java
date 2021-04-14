@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.schema.backend.entity.User;
 import com.schema.backend.repository.UserRepository;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,9 +67,17 @@ public class UserController {
     }
 
     // update user
+		// conversar com o professor sobre os retornos
     @PutMapping("/update-user={id}")
-    public User updateUser(@RequestBody User user){
-        return userRepository.save(user);
-    }
+    public String updateUser(@RequestBody User user){
+			String t = userRepository.findById(user.getId()).get().getEmail().toLowerCase().toString();
+			String p =  user.getEmail().toLowerCase().toString();
+			if(!t.equals(p)){
+				return "Email não pode ser alterado!";
+			}else{
+				userRepository.save(user);
+				return "Sucesso!";
+			}
+		}
 
 }
