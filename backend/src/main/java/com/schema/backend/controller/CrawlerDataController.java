@@ -21,7 +21,6 @@ public class CrawlerDataController {
 
 	@GetMapping("/listAll")
 	public List<Crawler> listAll(){
-		List<Crawler> list =  crawlerRepository.findAll();
-
+		return crawlerRepository.findAll();
 	}
 }
